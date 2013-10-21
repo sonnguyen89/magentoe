@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+/**
+*Magento admin config
+*
+*@author Magento
+*/
+ -->
+ 
+ <config>
+ <menu>
+ 	<news tranlate="title" module="magentostudy_news">
+ 	<title>News</title>
+ 	<sort_order>65</sort_order>
+ 	<children>
+ 		<manage translate="title" module="magentostudy_news">
+ 			<title>Manage News</title>
+ 			<action>adminhtml</action>
+ 			<sort_order>50</sort_order>
+ 		</manage>
+ 	</children>
+ 	</news>
+ </menu>
+ <acl>
+ 	<resource>
+ 		<Admin>
+ 			<children>
+ 				<news translate="title" module="magentostudy_news">
+ 				<title>News</title>
+ 				<sort_order>65</sort_order>
+ 				<children>
+ 					<manage translate="title">
+ 						<title>Manage News</title>
+ 						<sort_order>0</sort_order>
+ 						<children>
+ 							<save translate="title">
+ 								<title>Save News</title>
+ 								<sort_order>0</sort_order>
+ 							</save>
+ 							<delete translate="title">
+ 								<title>Delete News</title>
+ 								<sort_order>10</sort_order>
+ 						   </delete>
+ 						</children>
+ 					</manage>
+ 				</children>
+ 				</news>
+ 				<system>
+ 					<chidlren>
+ 						<config>
+ 							<children>
+ 								<news translate="title">
+ 									<title>News Management</title>
+ 								</news>
+ 							</children>
+ 						</config>
+ 					</chidlren>
+ 				</system>
+ 			</children>
+ 		</Admin>
+ 	</resource>
+ </acl>
+ 
+ </config>

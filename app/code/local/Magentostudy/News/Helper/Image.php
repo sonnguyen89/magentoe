@@ -112,4 +112,100 @@ class Magentostudy_News_Helper_Image extends Mage_Core_Helper_Abstract
 		return false;
 		
 	}
+	/*
+	 * Upload image and return uploaded image file name or false
+	 * 
+	 * @throws Mage_Core_Exception
+	 * @param string $scope the request key for file
+	 * @return bool|string
+	 */
+	
+	public function uploadImage($scope)
+	{
+		$adapter = new Zend_File_Transfer_Adapter_Http();
+		$adapter->addValidator('ImageSize',true,$this->_imagesize);
+		$adapter->addValidator('Size',true,self::MAX_FILE_SIZE);
+		if ($adapter->isUploaded()){
+			//validate image
+			if (!$adapter->isValid($scope))
+			{
+				Mage::throwException(Mage::helper('magentostudy_news')->__('Upload image is not valid'));
+			}
+			$upload = new Varien_File_Uploader($scope);
+			$upload->setAllowCreateFolders(true);
+			$upload->setAllowedExtensions($this->_allowedExtensions);
+			$upload->setAllowRenameFiles(true);
+			$upload->setFilesDispersion(false);
+			
+			if ($upload->save($this->getBaseDir())){
+					return $upload->getUploadedFileName();
+			}
+		}
+		return false;
+		
+	}
+	
+	/**
+	 * return URL for resized new item image
+	 * 
+	 * @param Magentostudy_news_Model_Item $item
+	 * @param integer $width
+	 * @param integer $height
+	 * @return bool|string
+	 */
+	public function resize(Magentostudy_News_Model_News $item, $width, $height= null)
+	{
+		if (!$item->getImage()){
+			return false;
+		}
+		
+		if ($width < self::MIN_WIDTH || $width > self::MAX_WIDTH){
+			return false;
+		}
+		$width= (int) $width;
+		
+		if (!is_null($height)){
+			if ($height < self::MIN_HEIGHT||$height > self::MAX_HEIGHT){
+				return false;
+			}
+			$height=(int)$height;
+		}
+		$imageFile = $item->getImage();
+		$cacheDir= $this->getBaseDir().DS.'cache'.DS.$width;
+		$cacheUrl= $this->getBaseUrl().'/'.'cache'.'/'.$width.'/';
+		
+		$io = new Varien_Io_File();
+		$io->checkAndCreateFolder($cacheDir);
+		$io->open(array('path'=>$cacheDir));
+		
+		if($io->fileExists($iamgeFile)){
+			return $cacheUrl. $imageFile;
+		}
+		
+		try{
+			$image =new Varien_Image($this->getBaseDir().DS.$imageFile);
+			$image->resize($width, $height);
+			$image->save($cacheDir.DS.$imageFile);
+			return $cahceUrl . $imageFile;
+		}catch (Exception $e){
+			Mage::logException($e);
+			return false;
+			
+		}
+		
+	}
+	/**
+	 * remove folder with cached images
+	 * 
+	 * @return boolean
+	 */
+	public function flushImageCache()
+	{
+     $cacheDir = $this->getBaseDir(). DS . 'cache' .DS;
+     $io = new Varien_Io_File();
+     if ($io->fileExist($cacheDir,false)){
+     	return $io->rmdir($cacheDir,true);
+     }
+     return true;
+	}
 }
