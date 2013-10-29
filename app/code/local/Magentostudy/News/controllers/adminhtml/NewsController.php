@@ -101,6 +101,78 @@ Mage_Adminhtml_Controller_Action
 	 * save action
 	 */
 	public function saveAction(){
+		$redirectPath='*/*';
+		$redirectParams = array();
 		
+		//check if data sent
+		$data = $this->getRequest()->getPost();
+		if($data){
+			$data = $this->_filterPostData($data);
+			
+			//init model and set data
+			/*
+			 * @var $model Magentostudy_news_model_item
+			 */
+			$model= Mage::getModel('magentostudy_news/news');
+			
+			//if news item exists, try to load it
+			$newsId = $this->getRequest()->getParam('news_id');
+			if($newsId){
+				$model->load($newsId);
+			}
+			//save image data and remove from data array
+			if (isset($data['image']))
+			{
+				$imageData = $data['image'];
+				unset($data['image']);
+			}else{
+				$imageData= array();
+			}
+			$model->addData($data);
+			try {
+				$hasError= false;
+				/* @var $imageHelper Magentostudy_News_Helper_Image */
+				$imageHelper = Mage::helper('magentostudy_news/image');
+				//remove image
+				
+				if (isset($imageData['delete']) && $model->getImage()){
+					$imageHelper->removeImage($model->getImage());
+					$model->setImage(null);
+				}
+				
+				//upload new image
+				$imageFile = $imageHelper->uploadImage('image');
+				if ($imageFile){
+					if ($model->getImage()){
+						$imageHelper->removeImage($model->getImage());
+					}
+					$model->setImage($imageFile);
+				}
+				//save the data
+				$model->save();
+				
+				//display success message
+				$this->_getSession()->addSuccess(Mage::helper('magentostudy_news')->__('the news item has been saved'));
+
+				//check if 'Save and Continue'
+				if ($this->getRequest()->getParam('back')){
+					$redirectPath = '*/*/edit';
+					$redirectParams = array('id' => $model->getId());
+				}
+			}catch(Mage_Core_Exception $e){
+				$hasError = true;
+				$this->_getSession()->addError($e->getMessage());
+			}catch (Exception $e){
+				$hasError = true;
+				$this->_getSession()->addException($e, Mage::helper('magentostudy_news')->__('An error occurred while saving the news item. '));
+			}
+			
+			if ($hasError){
+				$this->_getSession()->setFormData($data);
+				$redirectPath = '*/*/edit';
+				$redirectParams = array('id' => $this->getRequest()->getParam('id'));
+			}
+		}
+		$this->_redirect($redirectPath,$redirectParams);
 	}
 }
