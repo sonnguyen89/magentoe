@@ -175,4 +175,89 @@ Mage_Adminhtml_Controller_Action
 		}
 		$this->_redirect($redirectPath,$redirectParams);
 	}
+	/**
+	 * Delete action
+	 */
+	public function deleteAction()
+	{
+		//check if we know what should be deleted
+		$itemId = $this->getRequest()->getParam('id');
+	if ($itemId){
+		try {
+			//init model and delete
+			/**
+			 * @var $model Magentostudy_News_Model_Item
+			 */
+			$model = Mage::getModel('magentostudy_news/news');
+			$model->load($itemId);
+			if (!$model->getId())
+			{
+				Mage::throwException(Mage::helper('magentostudy_news/news')->__('Unable to find news item.'));
+			}
+			$model->delete();
+			
+			//display success message
+			$this->_getSession()->addSuccess(
+					Mage::helper('magentostudy_news')->__('The news item has been delete.'));
+		}catch (Mage_Core_Exception $e){
+			$this->_getSession()->addError($e->getMessage());
+		}catch(Exception $e){
+			$this->_getSession()->addException($e,Mage::helper('magentostudy_news')->__('An error occured while deleteing the new item'));
+		}
+	 }
+	 //go to grid
+	 $this->_redirect('*/*/');
+  }
+  /*
+   * Check teh permission to run it
+   * 
+   * @return boolean
+   */
+  protected function _isAllowed()
+  {
+  	switch ($this->getRequest()->getActionName()){
+  		case 'new':
+  		case 'save':
+  			return Mage::getSingleton('Admin/session')->isAllowed('news/manage/save');
+  			break;
+  		case 'delete':
+  			return Mage::getSingleton('Admin/session')->isAllowed('news/manage/delete');
+  			break;
+  		default:
+  			return Mage::getSingleton('Admin/session')->isAllowed('news/manage');
+  			break;
+  	}
+  }
+  /**
+   * Filtering posted data. Converting localised data if needed
+   * 
+   * @param array
+   * @return aray
+   */
+  protected function _filterPostData($data)
+  {
+  	$data = $this->_filterDates($data, array('time_published'));
+  	return $data;
+  }
+  /**
+   * Grid ajax action
+   */
+  public function gridAction()
+  {
+  	$this->loaLayout();
+  	$this->renderLayout();
+  }
+  
+  /**
+   * Flush News POsts Images Caches action
+   */
+  public function flushAction()
+  {
+  	if (Mage::helper('magentostudy_news/image')->flushImageCache()){
+  		$this->_getSession()->addSuccess('Cache successfully flushed');
+  	}else{
+  		$this->_getSession()->addError('There was error during flushing cache');
+  	}
+  	$this->_forward('index');
+  }
 }
