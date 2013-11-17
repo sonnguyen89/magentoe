@@ -4,7 +4,7 @@
  * 
  * @author magento
  */
-class Magentostudy_News_adminhtml_NewsController extends
+class Magentostudy_News_Adminhtml_NewsController extends
 Mage_Adminhtml_Controller_Action
 {
 	/**
@@ -33,6 +33,7 @@ Mage_Adminhtml_Controller_Action
 			->_title($this->__('Manage News'));
 		
 		$this->_initAction();
+		$this->renderLayout();
 	}
 	/**
 	 * create new News item

@@ -16,15 +16,15 @@
  	<children>
  		<manage translate="title" module="magentostudy_news">
  			<title>Manage News</title>
- 			<action>adminhtml</action>
+ 			<action>adminhtml/news</action>
  			<sort_order>50</sort_order>
  		</manage>
  	</children>
  	</news>
  </menu>
  <acl>
- 	<resource>
- 		<Admin>
+ 	<resources>
+ 		<admin>
  			<children>
  				<news translate="title" module="magentostudy_news">
  				<title>News</title>
@@ -47,19 +47,19 @@
  				</children>
  				</news>
  				<system>
- 					<chidlren>
+ 					<children>
  						<config>
  							<children>
- 								<news translate="title">
+ 								<news translate="title"  module="magentostudy_news">
  									<title>News Management</title>
  								</news>
  							</children>
  						</config>
- 					</chidlren>
+ 					</children>
  				</system>
  			</children>
- 		</Admin>
- 	</resource>
+ 		</admin>
+ 	</resources>
  </acl>
  
  </config>

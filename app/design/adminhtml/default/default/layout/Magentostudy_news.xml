@@ -13,6 +13,11 @@
  		</reference>
  	</adminhtml_news_index>
  
+ 	 
+ 	<adminhtml_news_grid>
+ 		    <block type="magentostudy_news/adminhtml_news_grid" name="root"/>
+ 	</adminhtml_news_grid>
+ 
  	<adminhtml_news_new>
  		<update handle="adminhtml_news_edit"/>
  	</adminhtml_news_new>

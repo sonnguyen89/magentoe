@@ -6,7 +6,7 @@
 */
  -->
  <config>
- 	<section>
+ 	<sections>
  		<news>
  			<class>separator-top</class>
  			<label>News</label>
@@ -18,7 +18,7 @@
  			<show_in_store>1</show_in_store>
  			<groups>
  				<view translate="label">
- 					<label>News View Setting</label>
+ 					<label>News View Settings</label>
  					<frontend_type>text</frontend_type>
  					<sort_order>10</sort_order>
  					<show_in_default>1</show_in_default>
@@ -56,5 +56,5 @@
  				</view>
  			</groups>
  		</news>
- 	</section>
+ 	</sections>
  </config>

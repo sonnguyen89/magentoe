@@ -4,7 +4,7 @@
  * 
  * @author Magento
  */
-class Magentostudy_News_Block_adminhtml_News extends Mage_Adminhtml_Block_Widget_Grid_Container
+class Magentostudy_News_Block_Adminhtml_News extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
 	/**
 	 * Block constructor

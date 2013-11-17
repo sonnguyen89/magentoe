@@ -4,7 +4,7 @@
  * 
  * @author Magento
  */
-class Magentostudy_News_Block_adminhtml_News_Edit_Form_Element_Image extends 
+class Magentostudy_News_Block_Adminhtml_News_Edit_Form_Element_Image extends 
 Varien_Data_Form_Element_Image{
 	
 	/**

@@ -4,7 +4,7 @@
  * 
  * @author Magento
  */
-class Magentostudy_News_Block_adminhtml_News_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+class Magentostudy_News_Block_Adminhtml_News_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
 {
 	/**
 	 * Initialize edit form container
@@ -18,7 +18,7 @@ class Magentostudy_News_Block_adminhtml_News_Edit extends Mage_Adminhtml_Block_W
 		
 		parent::__construct();
 		
-		if (Mage::helper('magentostudy_news/Admin')->isActionAllowed('save'))
+		if (Mage::helper('magentostudy_news/admin')->isActionAllowed('save'))
 		{
 			$this->_updateButton('save', 'label',Mage::helper('magentostudy_news')->__('Save News Item'));
 			$this->_addButton('saveandcontinue', array(
@@ -30,7 +30,7 @@ class Magentostudy_News_Block_adminhtml_News_Edit extends Mage_Adminhtml_Block_W
 		}else{
 			$this->_removeButton('save');
 		}
-		if(Mage::helper('magentostudy_news/Admin')->isActionAllowed('delete')){
+		if(Mage::helper('magentostudy_news/admin')->isActionAllowed('delete')){
 			$this->_updateButton('delete', 'label',Mage::helper('magentostudy_news')->__('Delete News Item'));
 		}else{
 			$this->_removeButton('delete');

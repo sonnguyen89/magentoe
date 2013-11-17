@@ -42,5 +42,6 @@
     ->addIndex($installer->getIdxName($installer->getTable('magentostudy_news/news'),
                                                               array('published_at'),Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
                                                            array('published_at'),array('type' =>Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX)
-                                       )->setCommment('News item');
+                                       )->setComment('News item');
+ $installer->getConnection()->createTable($table);
  			                                                     

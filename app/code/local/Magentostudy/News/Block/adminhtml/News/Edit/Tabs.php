@@ -5,7 +5,7 @@
  * @author Magento
  */
 
-class Magentostudy_News_Block_adminhtml_News_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
+class Magentostudy_News_Block_Adminhtml_News_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
 {
 	/**
 	 * Initialize tabs Admin edit form tabs block

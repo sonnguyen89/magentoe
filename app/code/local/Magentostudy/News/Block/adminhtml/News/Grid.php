@@ -4,7 +4,7 @@
  * 
  * @author Magento
  */
-class Magentostudy_News_Block_adminhtml_News_Edit_Grid
+class Magentostudy_News_Block_Adminhtml_News_Grid
 extends Mage_Adminhtml_Block_Widget_Grid
 {
 	/**
@@ -73,7 +73,7 @@ extends Mage_Adminhtml_Block_Widget_Grid
 				'type' => 'action',
 				'getter'=>'getId',
 				'actions'=>array(array(
-						'caption' =>Mage::helper('magentostuy_news')->__('Edit'),
+						'caption' =>Mage::helper('magentostudy_news')->__('Edit'),
 						'url' => array('base'=>'*/*/edit'),
 						'field'=>'id'
 						)),

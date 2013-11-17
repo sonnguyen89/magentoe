@@ -1,5 +1,5 @@
 <?php
-class Magentostudy_News_Block_adminhtml_News_Edit_Tab_Content
+class Magentostudy_News_Block_Adminhtml_News_Edit_Tab_Content
 extends Mage_Adminhtml_Block_Widget_Form
 implements Mage_Adminhtml_Block_Widget_Grid_Column_Tab_Interface
 {

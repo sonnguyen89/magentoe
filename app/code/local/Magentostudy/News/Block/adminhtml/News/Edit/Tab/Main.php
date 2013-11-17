@@ -5,7 +5,7 @@
  * @author Magento
  */
 
-class Magentostudy_News_Block_adminhtml_News_Edit_Tab_Main
+class Magentostudy_News_Block_Adminhtml_News_Edit_Tab_Main
 extends Mage_Adminhtml_Block_Widget_Form
 implements Mage_Adminhtml_Block_Widget_Tab_Interface
 {
