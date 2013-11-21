@@ -35,7 +35,7 @@ class Magentostudy_News_Block_Adminhtml_News_Edit extends Mage_Adminhtml_Block_W
 		}else{
 			$this->_removeButton('delete');
 		}
-		$this->_formScript[]="
+		$this->_formScripts[]="
 		function toggleEditor(){
 				if (tinyMCE.getInstanceById('page_content') == null)
 				{

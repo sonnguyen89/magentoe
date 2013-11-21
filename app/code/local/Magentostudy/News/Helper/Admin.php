@@ -14,6 +14,6 @@ class Magentostudy_News_Helper_Admin extends Mage_Core_Helper_Abstract
 	 */
 	public function isActionAllowed ($action)
 	{
-		return mage::getSingleton('Admin/session')->isAllowed('news/manage/'.$action);
+		return mage::getSingleton('admin/session')->isAllowed('news/manage/'.$action);
 	}
 }

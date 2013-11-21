@@ -61,9 +61,9 @@ Mage_Adminhtml_Controller_Action
 		
 		
 		//2 . if ID exist, check it and load data
-		$newId = $this->getRequest()->getParam('id');
+		$newsId = $this->getRequest()->getParam('id');
 		
-		if($newId){
+		if($newsId){
 			$model->load($newsId);
 			
 			if(!$model->getId())
@@ -75,7 +75,7 @@ Mage_Adminhtml_Controller_Action
 			}
 			//prepare title
 			$this->_title($model->getTitle());
-			$breadCrumb = Mage::helper($name)->__('Edit Item');
+			$breadCrumb = Mage::helper('magentostudy_news')->__('Edit Item');
 		}else{
 			$this->_title(Mage::helper('magentostudy_news')->__('New Item'));
 			$breadCrumb= Mage::helper('magentostudy_news')->__('New Item');
@@ -85,7 +85,7 @@ Mage_Adminhtml_Controller_Action
 		$this->_initAction()->_addBreadcrumb($breadCrumb,$breadCrumb);
 		
 		//2. set Entered data if there was an error during save
-		$data = Mage::getScriptSystemUrl('adminhtml/session')->getFormData(true);
+		$data = Mage::getSingleton('adminhtml/session')->getFormData(true);
 		if(!empty($data)){
 			$model->addData($data);
 		}

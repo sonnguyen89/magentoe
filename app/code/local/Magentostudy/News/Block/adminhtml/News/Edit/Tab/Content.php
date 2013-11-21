@@ -1,7 +1,7 @@
 <?php
 class Magentostudy_News_Block_Adminhtml_News_Edit_Tab_Content
 extends Mage_Adminhtml_Block_Widget_Form
-implements Mage_Adminhtml_Block_Widget_Grid_Column_Tab_Interface
+implements Mage_Adminhtml_Block_Widget_Tab_Interface
 {
 	
 	/*
@@ -14,7 +14,7 @@ implements Mage_Adminhtml_Block_Widget_Grid_Column_Tab_Interface
 		parent::_prepareLayout();
 		if(Mage::getSingleton('cms/wysiwyg_config')->isEnabled())
 		{
-			$this->getLayout()->getBlock('head')->setCanloadTinyMce(true);
+			$this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
 		}
 		return $this;
 	}
@@ -78,7 +78,17 @@ implements Mage_Adminhtml_Block_Widget_Grid_Column_Tab_Interface
 	 */
 	public function getTabLabel()
 	{
-		return Mage::helper('Magentostudy_news')->__('Content');
+		return Mage::helper('magentostudy_news')->__('Content');
+	}
+	
+	/**
+	 * Prepare title for tab
+	 *
+	 * @return string
+	 */
+	public function getTabTitle()
+	{
+		return Mage::helper('magentostudy_news')->__('Content');
 	}
 	
 	/**
