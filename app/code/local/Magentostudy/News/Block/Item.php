@@ -25,7 +25,7 @@ class Magentostudy_news_Block_Item extends Mage_Core_Block_Template
 	protected function _getbackUrlQueryParams($additionalParams=array())
 	{
 		
-		return array_merge(array('p'=> $this->getpage()),$additionalParams);
+		return array_merge(array('p'=> $this->getPage()),$additionalParams);
 	}
 	
 	/*
@@ -35,7 +35,7 @@ class Magentostudy_news_Block_Item extends Mage_Core_Block_Template
 	 */
 	public function getBackUrl()
 	{
-		return $this->getUrl('*/',array('_query'=>$this->_getbackUrlQueryParams()));
+		return $this->getUrl('*/',array('_query'=>$this->_getBackUrlQueryParams()));
 	}
 	
 	/*
@@ -48,7 +48,7 @@ class Magentostudy_news_Block_Item extends Mage_Core_Block_Template
 	 */
 	public function getImageUrl($item, $width)
 	{
-		return Mage::helper('magentosdtudy_news/image')->resize($item,$width);
+		return Mage::helper('magentostudy_news/image')->resize($item,$width);
 	}
 	
 }

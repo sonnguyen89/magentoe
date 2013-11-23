@@ -19,7 +19,7 @@ class Magentostudy_News_IndexController extends Mage_Core_Controller_Front_Actio
 		
 		if(!Mage::helper('magentostudy_news')->isEnabled()){
 			$this->setFlag('', 'no-dispatch', true);
-			$this->_redirect('noRoue');
+			$this->_redirect('noRoute');
 		}
 	}
 	
@@ -29,7 +29,7 @@ class Magentostudy_News_IndexController extends Mage_Core_Controller_Front_Actio
 	public function indexAction()
 	{
 		$this->loadLayout();
-		$thisBlock = $this->getLayout()->getBlock('news.list');
+		$listBlock = $this->getLayout()->getBlock('news.list');
 		
 		if($listBlock){
 			$currentPage = abs(intval($this->getRequest()->getParam('p')));
@@ -59,7 +59,7 @@ class Magentostudy_News_IndexController extends Mage_Core_Controller_Front_Actio
 		 * @var $model magentostudy_News_Model_News
 		 */
 		$model = Mage::getModel('magentostudy_news/news');
-		$model->load($newsid);
+		$model->load($newsId);
 		
 		if (!$model->getId()){
 			return  $this->_forward('noRoute');

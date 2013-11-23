@@ -14,7 +14,7 @@ class Magentostudy_News_Model_Observer
 	 */
 	public function beforeNewsDisplayed(Varien_Event_Observer $observer){
 		$newsItem = $observer->getEvent()->getNewsItem();
-		$currentDate= Mage::app()->getLocalte()->date();
+		$currentDate= Mage::app()->getLocale()->date();
 		$newsCreateAt= Mage::app()->getLocale()->date(strtotime($newsItem->getCreatedAt()));
 		$daysDifference = $currentDate->sub($newsCreateAt)->getTimestamp()/(60*60*24);
 

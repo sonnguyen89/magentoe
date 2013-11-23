@@ -13,7 +13,7 @@
 ?>
 
 <div id="news_list_messages">
-<?php echo $this->getMessageBlock()->getGroupedHtml() ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 </div>
 
 <div>
@@ -22,7 +22,7 @@
 
 
 <div>
-	<?php foreach ($this->getCOllection() as $newsItem) : ?>
+	<?php foreach ($this->getCollection() as $newsItem) : ?>
     <div id="item_<?php echo $newsItem->getId() ?>">
     	<h2>
     		<a href="<?php echo $this->getItemUrl($newsItem)?>">

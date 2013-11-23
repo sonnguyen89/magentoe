@@ -35,12 +35,12 @@ Mage_Core_Block_Template
 	 */
 	public function getCollection()
 	{
-		if(is_null($this->$_newsCollection)){
-			$this->$_newsCollection = $this->_getCollection();
-			$this->$_newsCollection->prepareForList($this->getCurrentPage());
+		if(is_null($this->_newsCollection)){
+			$this->_newsCollection = $this->_getCollection();
+			$this->_newsCollection->prepareForList($this->getCurrentPage());
 		}
 		
-		return $this->$_newsCollection;
+		return $this->_newsCollection;
 	}
 	/*
 	 * Return URL to item's view page
@@ -80,7 +80,7 @@ Mage_Core_Block_Template
 			$pager->setAvailableLimit(array($newsPerPage => $newsPerPage));
 			$pager->setTotalNum($this->getCollection()->getSize());
 			$pager->setCollection($this->getCollection());
-			
+			$pager->setShowPerPage(true);
 			return $pager->toHtml();
 		}
 		return null;

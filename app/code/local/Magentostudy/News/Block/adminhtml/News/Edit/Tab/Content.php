@@ -39,7 +39,7 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
 		
 		$form = new Varien_Data_Form();
 		
-		$form->setHtmlIdPrefix('news_content_');
+		$form->setHtmlIdPrefix('new_content_');
 		
 		$fieldset= $form->addFieldset('content_fieldset', array(
 			'legend'=>Mage::helper('magentostudy_news')->__('Content'),

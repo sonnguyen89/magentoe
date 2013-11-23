@@ -10,7 +10,7 @@
  <layout version ="0.1.0">
 	 <default>
 	 	<reference name="footer_links">
-	 	  <action method="addLink" translate ="lable title" module="magentostudy_news" ifconfig="news/view/enabled">
+	 	  <action method="addLink" translate ="label title" module="magentostudy_news" ifconfig="news/view/enabled">
 	 	          <label>News</label>
 	 	          <url>news</url>
 	 	          <title>News</title>
@@ -30,7 +30,7 @@
          	</action>
          </reference>
          <reference name="content">
-          <block type="magentostudy_news/list" name="news.list" translate="magentostudy/news/list.phtml">
+          <block type="magentostudy_news/list" name="news.list" template="magentostudy/news/list.phtml">
                <block type="page/html_pager" name="news.list.pager" as="news_list_pager"/>
           </block>
          </reference>

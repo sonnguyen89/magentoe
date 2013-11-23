@@ -59,7 +59,7 @@ class Magentostudy_News_Block_Adminhtml_News_Edit extends Mage_Adminhtml_Block_W
 	{
 		$model = Mage::helper('magentostudy_news')->getNewsItemInstance();
 		if($model->getId()){
-			return Mage::helper('magentostudy_news')->__("Edit News Item'%$'",$this->escapeHtml($model->getTitle()));			
+			return Mage::helper('magentostudy_news')->__("Edit News Item '%s'",$this->escapeHtml($model->getTitle()));			
 		} else{
 			return Mage::helper('magentostudy_news')->__('New News Item');
 		}

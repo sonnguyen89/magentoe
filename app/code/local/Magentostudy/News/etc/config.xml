@@ -62,7 +62,7 @@
 			<magentostudy_news>
 				<use>standard</use>
 				<args>
-					<module>Magentostudy_news</module>
+					<module>Magentostudy_News</module>
 					<frontName>news</frontName>
 				</args>
 			</magentostudy_news>
