@@ -9,13 +9,13 @@
  <layout>
  	<adminhtml_news_index>
  		<reference name="content">
- 			<block type="magentostudy_news/adminhtml_news" name="news" />
+ 			<block type="magentostudy_news/adminhtml_news" name="news"></block>
  		</reference>
  	</adminhtml_news_index>
  
  	 
  	<adminhtml_news_grid>
- 		    <block type="magentostudy_news/adminhtml_news_grid" name="root"/>
+ 		    <block type="magentostudy_news/adminhtml_news_grid" name="root"></block>
  	</adminhtml_news_grid>
  
  	<adminhtml_news_new>
@@ -25,7 +25,7 @@
  	<adminhtml_news_edit>
  		<update handle="editor"/>
  		<reference name="content">
- 			<block type="magentostudy_news/adminhtml_news_edit" name="news_edit"/>
+ 			<block type="magentostudy_news/adminhtml_news_edit" name="news_edit"></block>
  		</reference>
  		<reference name="left">
  		  	<block type="magentostudy_news/adminhtml_news_edit_tabs" name="news_edit_tabs">

@@ -20,7 +20,7 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
 		/**
 		 * checking if user have permission to save information
 		 */
-		if (Mage::helper('magentostudy_news/Admin')->isActionAllowed('save'))
+		if (Mage::helper('magentostudy_news/admin')->isActionAllowed('save'))
 		{
 			$isElementDisabled=false;
 		}else{
@@ -29,7 +29,7 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
 		
 		$form = new Varien_Data_Form();
 		
-		$form->setHtmlPrefix('news_main_');
+		$form->setHtmlIdPrefix('news_main_');
 		
 		$fieldset= $form->addFieldset('base_fieldset', array(
 				'legend' =>Mage::helper('magentostudy_news')->__('News Item Info')
@@ -59,7 +59,7 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
 				'label'=>Mage::helper('magentostudy_news')->__('Publishing Date'),
 				'title' => Mage::helper('magentostudy_news')->__('Publishing Date'),
 				'required'=>true,
-				'disabled'=>$isElementDisabled
+				
 		));
 		Mage::dispatchEvent('adminhtml_news_edit_tab_main_prepare_form',array('form'=>$form));
 		

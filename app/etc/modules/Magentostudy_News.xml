@@ -12,6 +12,9 @@
  	<Magentostudy_News>
  		<active>true</active>
  		<codePool>local</codePool>
+ 		      <depends>
+                <Mage_Adminhtml />
+            </depends>
  	</Magentostudy_News>
  	</modules>
  </config>

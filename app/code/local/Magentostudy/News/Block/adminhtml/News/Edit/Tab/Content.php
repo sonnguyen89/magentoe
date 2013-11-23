@@ -30,7 +30,7 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
 		/**
 		 * checking if user have permission to save information
 		 */
-		if (Mage::helper('magentostudy_news/Admin')->isActionAllowed('save'))
+		if (Mage::helper('magentostudy_news/admin')->isActionAllowed('save'))
 		{
 			$isElementDisabled = false;
 		}else {
@@ -39,7 +39,7 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
 		
 		$form = new Varien_Data_Form();
 		
-		$form->setHtmlPreFix('new_content_');
+		$form->setHtmlIdPrefix('news_content_');
 		
 		$fieldset= $form->addFieldset('content_fieldset', array(
 			'legend'=>Mage::helper('magentostudy_news')->__('Content'),
@@ -47,13 +47,12 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
 		 ));
 		
 		$wysiwygConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(
-				array(
-						'tab_id' => $this->getTabId()
+				array('tab_id' => $this->getTabId()
 			));
 		
 		$contentField = $fieldset->addField('content','editor',array(
 				'name' => 'content',
-				'style' =>'height:36em',
+				'style' =>'height:36em;',
 				'required'=>true,
 				'disabled'=>$isElementDisabled,
 				'config' => $wysiwygConfig

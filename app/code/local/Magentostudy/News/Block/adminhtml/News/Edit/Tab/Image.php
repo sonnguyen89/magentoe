@@ -19,9 +19,9 @@ implements Mage_Adminhtml_Block_Widget_Tab_Interface
 		/*
 		 * Checking if user have permissions to save information
 		 */
-		if(Mage::helper('magentostudy_news')->isActionAllowed('save'))
+		if(Mage::helper('magentostudy_news/admin')->isActionAllowed('save'))
 		{
-			$isElementDisabled=false;			
+			$isElementDisabled= false;			
 		}else{
 			$isElementDisabled = true;
 		}
