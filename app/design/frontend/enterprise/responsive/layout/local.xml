@@ -1,0 +1,11 @@
+<layout version="0.1.0">
+    <default>
+        <reference name="root">
+            <reference name="head">
+
+                <!--<action method="addItem"><type>skin_js</type><name>bootstrap/js/bootstrap.js</name></action>-->
+                <!--<action method="addItem"><type>skin_css</type><name>bootstrap/css/bootstrap.min.css</name></action>-->
+                </reference>
+            </reference>
+        </default>
+</layout>

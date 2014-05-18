@@ -211,3 +211,9 @@
 ## http://developer.yahoo.com/performance/rules.html#etags
 
     #FileETag none
+
+
+SetEnvIf Host magentoe-second\.localhost MAGE_RUN_CODE=stv
+SetEnvIf Host magentoe-second\.localhost MAGE_RUN_TYPE=store
+SetEnvIf Host magentoe-second\.localhost MAGE_RUN_CODE=second
+SetEnvIf Host magentoe-second\.localhost MAGE_RUN_TYPE=website
